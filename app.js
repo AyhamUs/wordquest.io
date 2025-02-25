@@ -54,24 +54,37 @@ function handleGuess() {
     }
 
     attempts++;
+
     if (!correctGuess) {
         document.getElementById("game-board").classList.add("animate-shake");
     }
 
     if (attempts >= maxAttempts || guessedLetters.length === word.length) {
         setTimeout(() => {
-            alert(guessedLetters.join("") === word ? "Congrats! You solved the word!" : `Game Over! The word was: ${word}`);
+            if (guessedLetters.join("") === word) {
+                showAlert("success", "Congratulations! You solved the word!");
+            } else {
+                showAlert("danger", `Game Over! The word was: ${word}`);
+            }
             resetGame();
         }, 500);
     }
 }
 
+function showAlert(type, message) {
+    const alertContainer = document.getElementById("alert-container");
+    alertContainer.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+        <strong>${type === "success" ? "Well Done!" : "Oops!"}</strong> ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+}
+
 function setupHintButton() {
-    document.querySelector("#hint-section button").addEventListener("click", showHint);
+    document.querySelector("button[onclick='showHint()']").addEventListener("click", showHint);
 }
 
 function showHint() {
-    alert(`Hint: ${clue}`);
+    showAlert("info", `Hint: ${clue}`);
 }
 
 function resetGame() {
@@ -79,4 +92,3 @@ function resetGame() {
     guessedLetters = [];
     renderGameBoard();
 }
-
