@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordQuest Adventure</title>
+    <title>WordQuest</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -37,13 +37,13 @@
 <body class="bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 h-screen text-white flex flex-col items-center justify-center">
 
     <div class="text-center">
-        <h1 class="text-4xl font-bold mb-4">WordQuest Adventure</h1>
+        <h1 class="text-4xl font-bold mb-4">WordQuest</h1>
         <p class="text-lg mb-6">Guess the word of the day!</p>
 
         <div id="game-board" class="flex justify-center mb-6 space-x-2"></div>
         
         <div class="flex justify-center space-x-2 mb-4">
-            <input id="user-input" type="text" maxlength="10" class="w-24 h-12 text-2xl text-center rounded-lg bg-gray-800 border-2 border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" autofocus>
+            <input id="user-input" type="text" maxlength="1" class="w-12 h-12 text-2xl text-center rounded-lg bg-gray-800 border-2 border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" autofocus>
             <button onclick="handleGuess()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Guess</button>
         </div>
 
@@ -87,8 +87,8 @@
             inputField.value = "";
             document.getElementById("message").textContent = ""; // Reset the message
 
-            if (!guess || guess.length !== 1 || guessedLetters.includes(guess)) {
-                return; // Do nothing if input is empty, more than one letter, or letter already guessed
+            if (!guess || guessedLetters.includes(guess)) {
+                return; // Do nothing if input is empty or letter already guessed
             }
 
             guessedLetters.push(guess);
