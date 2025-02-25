@@ -3,35 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordQuest</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>WordQuest Adventure</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Add custom styles here if necessary */
+        .letter-box {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .letter-box.correct {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .letter-box.wrong {
+            background-color: #F44336;
+            color: white;
+        }
+        .letter-box.exists {
+            background-color: #FF9800;
+            color: white;
+        }
+        .animate-shake {
+            animation: shake 0.3s ease-in-out;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
     </style>
 </head>
-<body class="bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 text-white">
-    <div class="min-h-screen flex flex-col items-center justify-center py-8">
-        <h1 class="text-5xl font-extrabold mb-4 text-center">Welcome to WordQuest</h1>
-        <p class="text-xl mb-6 text-center">Guess the word of the day and embark on your adventure!</p>
-        <div class="w-full max-w-lg bg-white rounded-xl p-6 shadow-lg">
-            <div id="game-board" class="flex flex-col items-center">
-                <!-- Game Interface (Dynamic Content) -->
+<body class="bg-gradient-to-br from-blue-600 via-purple-500 to-pink-600 text-white font-sans">
+
+    <div class="min-h-screen flex flex-col items-center justify-center space-y-8 py-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-5xl font-bold">WordQuest Adventure</h1>
+            <p class="text-lg mt-4">Solve a new word puzzle every day!</p>
+        </header>
+
+        <!-- Game Section -->
+        <section class="bg-white rounded-xl p-6 shadow-lg w-full max-w-md">
+            <div id="game-board" class="flex flex-wrap justify-center mb-6"></div>
+            <div class="flex justify-center space-x-4">
+                <input id="user-input" type="text" maxlength="1" class="p-3 text-center w-12 bg-gray-100 border-2 border-gray-400 rounded focus:outline-none focus:border-blue-500" autofocus>
+                <button onclick="handleGuess()" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-md">Guess</button>
             </div>
             <div id="hint-section" class="mt-4 text-center">
-                <!-- Clues and Hints -->
+                <p class="text-sm text-gray-600">Click below for a clue!</p>
+                <button onclick="showHint()" class="mt-2 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-md">Get a Hint</button>
             </div>
-            <button id="hint-button" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Get Hint</button>
-        </div>
-    </div>
+        </section>
 
-    <!-- Google Ads or Analytics Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "YOUR_ADSENSE_CLIENT_ID",
-            enable_page_level_ads: true
-        });
-    </script>
+        <!-- Footer -->
+        <footer class="text-center text-sm text-gray-300 mt-12">
+            <p>Powered by WordQuest</p>
+        </footer>
+    </div>
 
     <script src="app.js"></script>
 </body>
