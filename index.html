@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordQuest</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add custom styles here if necessary */
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 text-white">
+    <div class="min-h-screen flex flex-col items-center justify-center py-8">
+        <h1 class="text-5xl font-extrabold mb-4 text-center">Welcome to WordQuest</h1>
+        <p class="text-xl mb-6 text-center">Guess the word of the day and embark on your adventure!</p>
+        <div class="w-full max-w-lg bg-white rounded-xl p-6 shadow-lg">
+            <div id="game-board" class="flex flex-col items-center">
+                <!-- Game Interface (Dynamic Content) -->
+            </div>
+            <div id="hint-section" class="mt-4 text-center">
+                <!-- Clues and Hints -->
+            </div>
+            <button id="hint-button" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Get Hint</button>
+        </div>
+    </div>
+
+    <!-- Google Ads or Analytics Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "YOUR_ADSENSE_CLIENT_ID",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>
