@@ -50,14 +50,12 @@
         <button onclick="showHint()" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300">Get a Hint</button>
 
         <div id="message" class="mt-4 text-lg font-semibold text-red-400"></div>
+        <div id="attempts" class="mt-2 text-lg font-semibold"></div>
     </div>
 
     <script>
         const wordList = [
-            { word: "adventure", clue: "A journey of discovery." },
-            { word: "mystery", clue: "Something unknown or hidden." },
-            { word: "puzzle", clue: "A challenging problem to solve." },
-            { word: "heroic", clue: "Related to brave deeds." }
+            { word: "ayham", clue: "The best person ever." }
         ];
 
         let attempts = 0;
@@ -112,6 +110,7 @@
             }
 
             attempts++;
+            document.getElementById("attempts").textContent = `Tries: ${attempts}`;
 
             if (wrongGuess) {
                 document.getElementById("game-board").classList.add("shake");
@@ -119,11 +118,7 @@
 
             if (correctGuess && guessedLetters.length === word.length) {
                 setTimeout(() => {
-                    document.getElementById("message").textContent = "Congratulations! You've solved the word!";
-                }, 500);
-            } else if (attempts >= maxAttempts) {
-                setTimeout(() => {
-                    document.getElementById("message").textContent = `Game Over! The word was: ${word}`;
+                    document.getElementById("message").textContent = `Congratulations! You've solved the word in ${attempts} tries today!`;
                 }, 500);
             }
         }
