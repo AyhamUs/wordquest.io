@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WordQuest Adventure</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <!-- Bootstrap 5.1 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .letter-box {
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         .letter-box.correct {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .letter-box.wrong {
-            background-color: #F44336;
+            background-color: #28a745;
             color: white;
         }
         .letter-box.exists {
-            background-color: #FF9800;
+            background-color: #ffc107;
+            color: white;
+        }
+        .letter-box.wrong {
+            background-color: #dc3545;
             color: white;
         }
         .animate-shake {
@@ -33,34 +35,36 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-600 via-purple-500 to-pink-600 text-white font-sans">
+<body class="bg-gradient-to-br from-blue-600 via-purple-500 to-pink-600 text-white">
 
-    <div class="min-h-screen flex flex-col items-center justify-center space-y-8 py-8">
+    <div class="min-h-screen flex flex-col items-center justify-center py-8">
         <!-- Header -->
-        <header class="text-center">
-            <h1 class="text-5xl font-bold">WordQuest Adventure</h1>
-            <p class="text-lg mt-4">Solve a new word puzzle every day!</p>
+        <header class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-white">WordQuest Adventure</h1>
+            <p class="text-lg text-white mt-4">Guess the word of the day, every day!</p>
         </header>
 
+        <!-- Alerts -->
+        <div id="alert-container" class="mb-6 w-full max-w-lg text-center"></div>
+
         <!-- Game Section -->
-        <section class="bg-white rounded-xl p-6 shadow-lg w-full max-w-md">
-            <div id="game-board" class="flex flex-wrap justify-center mb-6"></div>
-            <div class="flex justify-center space-x-4">
-                <input id="user-input" type="text" maxlength="1" class="p-3 text-center w-12 bg-gray-100 border-2 border-gray-400 rounded focus:outline-none focus:border-blue-500" autofocus>
-                <button onclick="handleGuess()" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-md">Guess</button>
+        <div class="card w-full max-w-lg bg-white p-4 rounded-lg shadow-lg">
+            <div id="game-board" class="flex justify-center mb-6"></div>
+            <div class="flex justify-center mb-4">
+                <input id="user-input" type="text" maxlength="1" class="form-control w-16 text-center mx-2" autofocus>
+                <button onclick="handleGuess()" class="btn btn-success">Guess</button>
             </div>
-            <div id="hint-section" class="mt-4 text-center">
-                <p class="text-sm text-gray-600">Click below for a clue!</p>
-                <button onclick="showHint()" class="mt-2 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-md">Get a Hint</button>
-            </div>
-        </section>
+            <button onclick="showHint()" class="btn btn-info w-full">Get a Hint</button>
+        </div>
 
         <!-- Footer -->
-        <footer class="text-center text-sm text-gray-300 mt-12">
-            <p>Powered by WordQuest</p>
+        <footer class="text-center mt-8">
+            <p class="text-white text-sm">Powered by WordQuest Adventure</p>
         </footer>
     </div>
 
+    <!-- Bootstrap & Tailwind Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
